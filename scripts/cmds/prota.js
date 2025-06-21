@@ -1,124 +1,147 @@
-const fs = require("fs");
-const path = require("path");
+const questions = [
+  { question: "Quel est le héros principal de One Piece ?", answer: "Luffy", level: "easy" },
+  { question: "Quel est le nom du ninja blond de Konoha ?", answer: "Naruto", level: "easy" },
+  { question: "Qui possède le Death Note ?", answer: "Light", level: "easy" },
+  { question: "Quel est le héros dans Bleach ?", answer: "Ichigo", level: "easy" },
+  { question: "Comment s'appelle le héros de My Hero Academia ?", answer: "Deku", level: "easy" },
+  { question: "Qui est le frère adoptif de Sasuke ?", answer: "Itachi", level: "easy" },
+  { question: "Qui est le roi des démons dans Nanatsu no Taizai ?", answer: "Meliodas", level: "easy" },
+  { question: "Qui est le chasseur de démons au kimono à motif hanafuda ?", answer: "Tanjiro", level: "easy" },
+  { question: "Quel est le prénom du héros dans Dragon Ball ?", answer: "Goku", level: "easy" },
+  { question: "Qui est l'alchimiste d'acier ?", answer: "Edward", level: "easy" },
+  { question: "Dans Tokyo Ghoul, qui devient un demi-goule ?", answer: "Kaneki", level: "easy" },
+  { question: "Comment s'appelle le pirate au chapeau de paille ?", answer: "Luffy", level: "easy" },
+  { question: "Quel personnage veut devenir Hokage ?", answer: "Naruto", level: "easy" },
+  { question: "Qui est le rival de Goku ?", answer: "Vegeta", level: "easy" },
+  { question: "Dans Hunter x Hunter, qui est le protagoniste principal ?", answer: "Gon", level: "easy" },
+  { question: "Quel héros possède une force surhumaine dans One Punch Man ?", answer: "Saitama", level: "easy" },
+  { question: "Qui est la sœur de Tanjiro ?", answer: "Nezuko", level: "easy" },
+  { question: "Dans Fairy Tail, qui utilise la magie du feu du dragon ?", answer: "Natsu", level: "easy" },
+  { question: "Quel personnage principal est détective dans Detective Conan ?", answer: "Conan", level: "easy" },
+  { question: "Qui est le roi des pirates dans One Piece ?", answer: "Luffy", level: "easy" },
+  { question: "Dans Jujutsu Kaisen, qui avale un doigt maudit ?", answer: "Yuji", level: "easy" },
+  { question: "Quel est le vrai nom de Kira dans Death Note ?", answer: "Light", level: "easy" },
+  { question: "Dans Black Clover, qui ne possède pas de magie ?", answer: "Asta", level: "easy" },
+  { question: "Qui veut devenir le roi sorcier ?", answer: "Asta", level: "easy" },
+  { question: "Quel héros utilise le Gear Fourth ?", answer: "Luffy", level: "easy" },
+  { question: "Quel est le prénom de Midoriya ?", answer: "Izuku", level: "easy" },
+  { question: "Qui est le principal antagoniste de Naruto ?", answer: "Madara", level: "easy" },
+  { question: "Quel est le frère d’Edward Elric ?", answer: "Alphonse", level: "easy" },
+  { question: "Quel personnage a un œil de ghoul ?", answer: "Kaneki", level: "easy" },
+  { question: "Dans SAO, qui est le héros ?", answer: "Kirito", level: "easy" },
+  { question: "Quel est le rêve de Naruto ?", answer: "Hokage", level: "easy" },
+  { question: "Quel héros vit dans l'univers des titans ?", answer: "Eren", level: "easy" },
+  { question: "Quel est le prénom de l'héroïne dans The Promised Neverland ?", answer: "Emma", level: "easy" },
+  { question: "Qui est le capitaine de l'équipage du chapeau de paille ?", answer: "Luffy", level: "easy" },
+  { question: "Quel héros porte une cape blanche dans One Punch Man ?", answer: "Saitama", level: "easy" },
+  { question: "Dans Mob Psycho 100, comment s'appelle le héros ?", answer: "Mob", level: "easy" },
+  { question: "Dans Blue Exorcist, qui est le fils de Satan ?", answer: "Rin", level: "easy" },
+  { question: "Quel héros a un bras mécanique dans Fullmetal Alchemist ?", answer: "Edward", level: "easy" },
+  { question: "Qui est le meilleur ami de Gon ?", answer: "Killua", level: "easy" },
+  { question: "Quel est le nom du détective dans Death Note ?", answer: "L", level: "easy" },
+  { question: "Dans Naruto, qui est le professeur de l'équipe 7 ?", answer: "Kakashi", level: "easy" },
+  { question: "Quel personnage veut venger son clan dans Naruto ?", answer: "Sasuke", level: "easy" },
+  { question: "Qui est le mentor de Deku ?", answer: "All Might", level: "easy" },
+  { question: "Quel est le prénom du Titan Assaillant ?", answer: "Eren", level: "easy" },
+  { question: "Qui est le fondateur du clan Uchiha ?", answer: "Madara", level: "easy" },
+  { question: "Quel héros se bat contre Muzan dans Demon Slayer ?", answer: "Tanjiro", level: "easy" },
+  { question: "Quel est le nom complet de Luffy ?", answer: "Monkey D. Luffy", level: "easy" },
+  { question: "Qui est le chef de l'équipe Fairy Tail ?", answer: "Makarov", level: "easy" },
+  { question: "Quel est le nom de famille de Naruto ?", answer: "Uzumaki", level: "easy" }
+];
+
+function normalize(text) {
+  return text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]/gi, "")
+    .trim();
+}
+
+const activeSessions = {};
 
 module.exports = {
   config: {
     name: "prota",
-    version: "2.2.0",
-    hasPermission: 1,
-    credits: "Bryan",
-    description: "Quiz sur les protagonistes de mangas",
-    commandCategory: "game",
-    usages: "prota <facile/difficile> <10/20/30>",
-    cooldowns: 5
+    role: "0",
+    author: "Merdi Madimba or Bryan Bulakali",
+    version: "1.0",
+    description: "Quiz culture manga avec score",
+    category: "🎮 Jeu"
   },
 
-  onStart: async function ({ api, event, args }) {
-    const { threadID, messageID, senderID } = event;
-    const threadInfo = await api.getThreadInfo(threadID);
-    const isAdmin = threadInfo.adminIDs.some(e => e.id == senderID);
-    if (!isAdmin)
-      return api.sendMessage("❌ Seuls les administrateurs peuvent utiliser cette commande.", threadID, messageID);
+  onStart: async function ({ event, message, usersData }) {
+    const threadID = event.threadID;
 
-    const niveau = args[0]?.toLowerCase();
-    const nombre = parseInt(args[1]);
-
-    if (!niveau || !["facile", "difficile"].includes(niveau))
-      return api.sendMessage("❗Veuillez indiquer un niveau valide : `facile` ou `difficile`", threadID, messageID);
-
-    if (![10, 20, 30].includes(nombre))
-      return api.sendMessage("❗Nombre de questions invalide. Choisissez entre 10, 20 ou 30.", threadID, messageID);
-
-    const filePath = path.join(__dirname, "data", "protagonistes.json");
-    if (!fs.existsSync(filePath)) {
-      return api.sendMessage("❌ Fichier des questions introuvable.", threadID, messageID);
+    if (activeSessions[threadID]) {
+      return message.reply("❗ Un quiz est déjà en cours !");
     }
 
-    const allQuestions = JSON.parse(fs.readFileSync(filePath, "utf-8"));
-    const questions = allQuestions
-      .filter(q => niveau === "facile" ? q.level === "easy" : q.level === "hard")
-      .sort(() => 0.5 - Math.random())
-      .slice(0, nombre);
+    const selected = [...questions].sort(() => 0.5 - Math.random()).slice(0, 20);
+    const scores = {};
+    let currentIndex = 0;
+    let currentQuestion = null;
+    let timeoutID = null;
+    let answered = false;
 
-    const intro = `♨️⚔️🐥⚡QUIZ PROTA⚡🐥⚔️♨️
+    const sendQuestion = async () => {
+      if (currentIndex >= selected.length) {
+        const sorted = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+        let finalBoard = "🏁 Fin du quiz ! Résultat final :\n";
+        let winner = sorted[0]?.[0] || "Aucun";
 
-𝕄𝕆𝔻𝕆: ${niveau.toUpperCase()}
-___________________________
-
-𝕄𝕆𝔻𝕆 𝔸𝕃𝕃
-𝕆ℝ𝕋ℍ𝕆 ⛔
-𝕄𝔼𝕊𝕊𝔸𝔾𝔼𝕊 𝔻𝔼𝕋𝔸ℂℍ𝔼𝕊 ⛔
-𝕃𝕆𝕋𝕆 ⛔
-
-🏆 [ HAJIME ] 🏆
-
-🔁 Répondez à chaque question.`;
-
-    api.sendMessage(intro, threadID, () => {
-      askQuestion(api, threadID, senderID, questions, 0, nombre, {}, niveau);
-    });
-  },
-
-  handleReply: async function ({ api, event, handleReply }) {
-    const { body, senderID, threadID } = event;
-    const { questions, current, score, total, timer, responded, author, difficulte } = handleReply;
-
-    if (responded.has(senderID)) return;
-
-    const userAnswer = body.trim().toLowerCase();
-    const correctAnswer = questions[current].answer.trim().toLowerCase();
-
-    if (userAnswer === correctAnswer) {
-      responded.add(senderID);
-      score[senderID] = (score[senderID] || 0) + 1;
-      clearTimeout(timer);
-
-      return api.sendMessage(`✅ Bonne réponse @${senderID}`, threadID, () => {
-        if (current + 1 >= total) {
-          sendFinalScore(api, threadID, score);
-        } else {
-          askQuestion(api, threadID, author, questions, current + 1, total, score, difficulte);
+        for (let [name, pts] of sorted) {
+          finalBoard += `🏅 ${name} : ${pts} pts\n`;
         }
-      }, [senderID]);
-    }
+
+        finalBoard += `👑 Vainqueur : ${winner}`;
+        await message.send(finalBoard);
+        delete activeSessions[threadID];
+        return;
+      }
+
+      answered = false;
+      currentQuestion = selected[currentIndex];
+      await message.send(`❓ Question ${currentIndex + 1} : ${currentQuestion.question}`);
+
+      timeoutID = setTimeout(async () => {
+        if (!answered) {
+          await message.send(`⏰ Temps écoulé ! La bonne réponse était : ${currentQuestion.answer}`);
+          currentIndex++;
+          sendQuestion();
+        }
+      }, 10000);
+    };
+
+    activeSessions[threadID] = async ({ event, message }) => {
+      if (!currentQuestion || answered) return;
+
+      const senderName = await usersData.getName(event.senderID);
+      const msg = event.body?.toLowerCase().trim();
+
+      if (normalize(msg) === normalize(currentQuestion.answer)) {
+        answered = true;
+        clearTimeout(timeoutID);
+
+        scores[senderName] = (scores[senderName] || 0) + 10;
+
+        let board = "📊 Score actuel :\n";
+        for (let [name, pts] of Object.entries(scores)) {
+          board += `🏅 ${name} : ${pts} pts\n`;
+        }
+
+        await message.reply(`✅ Bonne réponse de ${senderName} !\n\n${board}`);
+        currentIndex++;
+        setTimeout(sendQuestion, 1000);
+      }
+    };
+
+    sendQuestion();
+  },
+
+  onChat: function (context) {
+    const handler = activeSessions[context.event.threadID];
+    if (handler) handler(context);
   }
 };
-
-function askQuestion(api, threadID, author, questions, current, total, score, difficulte) {
-  const question = questions[current];
-  const responded = new Set();
-
-  api.sendMessage(`❓ Question ${current + 1}/${total}\n\n${question.question}`, threadID, (err, info) => {
-    const timeout = setTimeout(() => {
-      if (current + 1 >= total) {
-        sendFinalScore(api, threadID, score);
-      } else {
-        api.sendMessage("⏱ Temps écoulé. Prochaine question...", threadID, () => {
-          askQuestion(api, threadID, author, questions, current + 1, total, score, difficulte);
-        });
-      }
-    }, 10000);
-
-    global.client.handleReply.push({
-      name: "prota",
-      messageID: info.messageID,
-      author,
-      questions,
-      current,
-      score,
-      total,
-      timer: timeout,
-      responded,
-      difficulte
-    });
-  });
-}
-
-function sendFinalScore(api, threadID, score) {
-  const leaderboard = Object.entries(score)
-    .sort((a, b) => b[1] - a[1])
-    .map(([id, sc], i) => `${i + 1}. @${id} - ${sc} ✅`)
-    .join("\n");
-
-  api.sendMessage(`🏁 Fin du Quiz !\n\n🎖️ Résultats :\n${leaderboard}`, threadID, null, Object.keys(score));
-  }
