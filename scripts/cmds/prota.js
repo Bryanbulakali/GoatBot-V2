@@ -1,54 +1,62 @@
+// ============================
+// 🧠 Questions du Quiz
+// ============================
+
 const questions = [
-  { question: "Quel est le héros principal de One Piece ?", answer: "Luffy", level: "easy" },
-  { question: "Quel est le nom du ninja blond de Konoha ?", answer: "Naruto", level: "easy" },
-  { question: "Qui possède le Death Note ?", answer: "Light", level: "easy" },
-  { question: "Quel est le héros dans Bleach ?", answer: "Ichigo", level: "easy" },
-  { question: "Comment s'appelle le héros de My Hero Academia ?", answer: "Deku", level: "easy" },
-  { question: "Qui est le frère adoptif de Sasuke ?", answer: "Itachi", level: "easy" },
-  { question: "Qui est le roi des démons dans Nanatsu no Taizai ?", answer: "Meliodas", level: "easy" },
-  { question: "Qui est le chasseur de démons au kimono à motif hanafuda ?", answer: "Tanjiro", level: "easy" },
-  { question: "Quel est le prénom du héros dans Dragon Ball ?", answer: "Goku", level: "easy" },
-  { question: "Qui est l'alchimiste d'acier ?", answer: "Edward", level: "easy" },
-  { question: "Dans Tokyo Ghoul, qui devient un demi-goule ?", answer: "Kaneki", level: "easy" },
-  { question: "Comment s'appelle le pirate au chapeau de paille ?", answer: "Luffy", level: "easy" },
-  { question: "Quel personnage veut devenir Hokage ?", answer: "Naruto", level: "easy" },
-  { question: "Qui est le rival de Goku ?", answer: "Vegeta", level: "easy" },
-  { question: "Dans Hunter x Hunter, qui est le protagoniste principal ?", answer: "Gon", level: "easy" },
-  { question: "Quel héros possède une force surhumaine dans One Punch Man ?", answer: "Saitama", level: "easy" },
-  { question: "Qui est la sœur de Tanjiro ?", answer: "Nezuko", level: "easy" },
-  { question: "Dans Fairy Tail, qui utilise la magie du feu du dragon ?", answer: "Natsu", level: "easy" },
-  { question: "Quel personnage principal est détective dans Detective Conan ?", answer: "Conan", level: "easy" },
-  { question: "Qui est le roi des pirates dans One Piece ?", answer: "Luffy", level: "easy" },
-  { question: "Dans Jujutsu Kaisen, qui avale un doigt maudit ?", answer: "Yuji", level: "easy" },
-  { question: "Quel est le vrai nom de Kira dans Death Note ?", answer: "Light", level: "easy" },
-  { question: "Dans Black Clover, qui ne possède pas de magie ?", answer: "Asta", level: "easy" },
-  { question: "Qui veut devenir le roi sorcier ?", answer: "Asta", level: "easy" },
-  { question: "Quel héros utilise le Gear Fourth ?", answer: "Luffy", level: "easy" },
-  { question: "Quel est le prénom de Midoriya ?", answer: "Izuku", level: "easy" },
-  { question: "Qui est le principal antagoniste de Naruto ?", answer: "Madara", level: "easy" },
-  { question: "Quel est le frère d’Edward Elric ?", answer: "Alphonse", level: "easy" },
-  { question: "Quel personnage a un œil de ghoul ?", answer: "Kaneki", level: "easy" },
-  { question: "Dans SAO, qui est le héros ?", answer: "Kirito", level: "easy" },
-  { question: "Quel est le rêve de Naruto ?", answer: "Hokage", level: "easy" },
-  { question: "Quel héros vit dans l'univers des titans ?", answer: "Eren", level: "easy" },
-  { question: "Quel est le prénom de l'héroïne dans The Promised Neverland ?", answer: "Emma", level: "easy" },
-  { question: "Qui est le capitaine de l'équipage du chapeau de paille ?", answer: "Luffy", level: "easy" },
-  { question: "Quel héros porte une cape blanche dans One Punch Man ?", answer: "Saitama", level: "easy" },
-  { question: "Dans Mob Psycho 100, comment s'appelle le héros ?", answer: "Mob", level: "easy" },
-  { question: "Dans Blue Exorcist, qui est le fils de Satan ?", answer: "Rin", level: "easy" },
-  { question: "Quel héros a un bras mécanique dans Fullmetal Alchemist ?", answer: "Edward", level: "easy" },
-  { question: "Qui est le meilleur ami de Gon ?", answer: "Killua", level: "easy" },
-  { question: "Quel est le nom du détective dans Death Note ?", answer: "L", level: "easy" },
-  { question: "Dans Naruto, qui est le professeur de l'équipe 7 ?", answer: "Kakashi", level: "easy" },
-  { question: "Quel personnage veut venger son clan dans Naruto ?", answer: "Sasuke", level: "easy" },
-  { question: "Qui est le mentor de Deku ?", answer: "All Might", level: "easy" },
-  { question: "Quel est le prénom du Titan Assaillant ?", answer: "Eren", level: "easy" },
-  { question: "Qui est le fondateur du clan Uchiha ?", answer: "Madara", level: "easy" },
-  { question: "Quel héros se bat contre Muzan dans Demon Slayer ?", answer: "Tanjiro", level: "easy" },
-  { question: "Quel est le nom complet de Luffy ?", answer: "Monkey D. Luffy", level: "easy" },
-  { question: "Qui est le chef de l'équipe Fairy Tail ?", answer: "Makarov", level: "easy" },
-  { question: "Quel est le nom de famille de Naruto ?", answer: "Uzumaki", level: "easy" }
+  { question: "Jojo no kimyou no bouken diamond is unbreakable", answer: "Josuke", level: "easy" },
+  { question: "Fairy tail", answer: "Natsu", level: "easy" },
+  { question: "Jojo's bizarre adventure golden wind", answer: "Giorno", level: "easy" },
+  { question: "Vinland Saga", answer: "Thorfinn", level: "easy" },
+  { question: "Boruto two blue vortex", answer: "Boruto", level: "easy" },
+  { question: "Boruto : Naruto next générations", answer: "Boruto", level: "easy" },
+  { question: "Solo Leveling", answer: "Jinwoo", level: "easy" },
+  { question: "Chicano Kei", answer: "Kei", level: "easy" },
+  { question: "Pokemon ligue indigo", answer: "Sasha", level: "easy" },
+  { question: "Fullmetal Alchemist", answer: "Edward", level: "easy" },
+  { question: "Fire Force", answer: "Shinra", level: "easy" },
+  { question: "Food Wars", answer: "Soma", level: "easy" },
+  { question: "Bleach Thousand Year Blood War", answer: "Ichigo", level: "easy" },
+  { question: "Hunter X Hunter", answer: "Gon", level: "easy" },
+  { question: "Dr Stone", answer: "Senku", level: "easy" },
+  { question: "The Seven Deadly Sins", answer: "Meliodas", level: "easy" },
+  { question: "Assassination Classroom", answer: "Nagisa", level: "easy" },
+  { question: "Blue Lock", answer: "Isagi", level: "easy" },
+  { question: "Détective Conan", answer: "Conan", level: "easy" },
+  { question: "Jujutsu Kaisen 0", answer: "Yuta", level: "easy" },
+  { question: "Jujutsu Kaisen", answer: "Yuji", level: "easy" },
+  { question: "Death Note", answer: "Light", level: "easy" },
+  { question: "Classroom of the Elite", answer: "Kiyotaka", level: "easy" },
+  { question: "Black Clover", answer: "Asta", level: "easy" },
+  { question: "Shangri-La Frontier", answer: "Sunraku", level: "easy" },
+  { question: "Kengan Ashura", answer: "Ohma", level: "easy" },
+  { question: "Bleach", answer: "Ichigo", level: "easy" },
+  { question: "Tomodachi Game", answer: "Yuichi", level: "easy" },
+  { question: "Tokyo Ghoul", answer: "Ken", level: "easy" },
+  { question: "Sword Art Online", answer: "Kirito", level: "easy" },
+  { question: "Naruto", answer: "Naruto", level: "easy" },
+  { question: "Captain Tsubasa", answer: "Tsubasa", level: "easy" },
+  { question: "The Promised Neverland", answer: "Emma", level: "easy" },
+  { question: "One Piece", answer: "Luffy", level: "easy" },
+  { question: "One Punch Man", answer: "Saitama", level: "easy" },
+  { question: "Kingdom", answer: "Shin", level: "easy" },
+  { question: "Blue Exorcist", answer: "Rin", level: "easy" },
+  { question: "Fullmetal Alchemist Brotherhood", answer: "Edward", level: "easy" },
+  { question: "Sakamoto Days", answer: "Sakamoto", level: "easy" },
+  { question: "Bungo Stray Dogs", answer: "Atsushi", level: "easy" },
+  { question: "Mob Psycho 100", answer: "Shigeo", level: "easy" },
+  { question: "No Game No Life", answer: "Shiro et Sora", level: "easy" },
+  { question: "Hell's Paradise", answer: "Gabimaru", level: "easy" },
+  { question: "Attack on Titan", answer: "Eren", level: "easy" },
+  { question: "Hellsing", answer: "Alucard", level: "easy" },
+  { question: "Demon Slayer", answer: "Tanjiro", level: "easy" },
+  { question: "My Hero Academia", answer: "Deku", level: "easy" },
+  { question: "Baki Hanma", answer: "Baki", level: "easy" },
+  { question: "The Rising of the Shield Hero", answer: "Naofumi", level: "easy" }
 ];
+
+// ============================
+// 🔧 Fonction de normalisation
+// ============================
 
 function normalize(text) {
   return text
@@ -59,15 +67,23 @@ function normalize(text) {
     .trim();
 }
 
+// ============================
+// 🧠 Sessions actives du quiz
+// ============================
+
 const activeSessions = {};
+
+// ============================
+// 🧩 Commande GoatBot
+// ============================
 
 module.exports = {
   config: {
     name: "prota",
-    role: "0",
-    author: "Merdi Madimba or Bryan Bulakali",
+    role: 0,
+    author: "Merdi Madimba & Bryan Bulakali",
     version: "1.0",
-    description: "Quiz culture manga avec score",
+    description: "🎮 Quiz culture manga avec score",
     category: "🎮 Jeu"
   },
 
@@ -75,10 +91,10 @@ module.exports = {
     const threadID = event.threadID;
 
     if (activeSessions[threadID]) {
-      return message.reply("❗ Un quiz est déjà en cours !");
+      return message.reply("❗ Un quiz est déjà en cours dans cette conversation !");
     }
 
-    const selected = [...questions].sort(() => 0.5 - Math.random()).slice(0, 20);
+    const selected = [...questions].sort(() => Math.random() - 0.5).slice(0, 20);
     const scores = {};
     let currentIndex = 0;
     let currentQuestion = null;
@@ -95,7 +111,7 @@ module.exports = {
           finalBoard += `🏅 ${name} : ${pts} pts\n`;
         }
 
-        finalBoard += `👑 Vainqueur : ${winner}`;
+        finalBoard += `\n👑 Vainqueur : ${winner}`;
         await message.send(finalBoard);
         delete activeSessions[threadID];
         return;
@@ -103,6 +119,7 @@ module.exports = {
 
       answered = false;
       currentQuestion = selected[currentIndex];
+
       await message.send(`❓ Question ${currentIndex + 1} : ${currentQuestion.question}`);
 
       timeoutID = setTimeout(async () => {
