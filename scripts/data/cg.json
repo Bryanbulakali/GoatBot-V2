@@ -1,4 +1,4 @@
-const questions = [
+[
   { "question": "Quel est le nom du mathématicien qui a inventé le calcul intégral ?", answer: ["isaac newton", "gottfried leibniz", "leibniz"] },
   { "question": "Quel empereur romain a légalisé le christianisme dans l’Empire romain ?", answer: ["constantin", "constantin ier"] },
   { "question": "Quel est le compositeur de l'opéra 'La Flûte enchantée' ?", answer: ["mozart", "wolfgang amadeus mozart"] },
@@ -184,4 +184,4 @@ const questions = [
   { "question": "Quel est le nom du fondateur de l’Empire perse ?", "answer": ["cyrus", "cyrus le grand"] },
   { "question": "Quel était le nom de la femme de Louis XVI ?", "answer": ["marie-antoinette"] },
   { "question": "Quel est l'instrument utilisé pour mesurer la pression atmosphérique ?", "answer": ["baromètre"] },
-];
+]
