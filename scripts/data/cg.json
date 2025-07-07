@@ -1,8 +1,7 @@
 [
-  { "question": "Quel est le nom du mathématicien qui a inventé le calcul intégral ?", answer: ["isaac newton", "gottfried leibniz", "leibniz"] },
-  { "question": "Quel empereur romain a légalisé le christianisme dans l’Empire romain ?", answer: ["constantin", "constantin ier"] },
-  { "question": "Quel est le compositeur de l'opéra 'La Flûte enchantée' ?", answer: ["mozart", "wolfgang amadeus mozart"] },
-  { "question": "Quel est le nom de l'élément chimique dont le symbole est 'Sn' ?", answer: ["étain"] },
+  { "question": "Quel empereur romain a légalisé le christianisme dans l’Empire romain ?", "answer": ["constantin", "constantin ier", "constantin 1er", "empereur constantin"] },
+  { "question": "Quel est le compositeur de l'opéra 'La Flûte enchantée' ?", "answer": ["mozart", "wolfgang amadeus mozart", "wolfgang a mozart", "w. a. mozart"] },
+  { "question": "Quel est le nom de l'élément chimique dont le symbole est 'Sn' ?", "answer": ["étain", "etain", "tin"] },
   { "question": "Qui a inventé l’imprimerie en Europe au XVe siècle ?", answer: ["gutenberg", "johannes gutenberg"] },
   { "question": "Quel est le nom du traité qui mit fin à la Première Guerre mondiale ?", answer: ["traité de versailles", "versailles"] },
   { "question": "Dans quelle ville Léonard de Vinci est-il mort ?", answer: ["amboise"] },
