@@ -387,12 +387,14 @@ function loginHelper(appState, email, password, globalOptions, callback, prCallb
 
     if (globalOptions.pageID) {
         mainPromise = mainPromise
-            .then(() => utils.get(`https://www.facebook.com/${globalOptions.pageID}/messages/?section=messages&subsection=inbox`, jar, null, globalOptions))
-            .then(resData => {
-                let url = utils.getFrom(resData.body, 'window.location.replace("https:\\/\\/www.facebook.com\\', '");').split('\\').join('');
-                url = url.substring(0, url.length - 1);
-                return utils.get('https://www.facebook.com' + url, jar, null, globalOptions);
-            });
+            .try {
+	require('fs').readdirSync(__dirname + '/src/').filter(v => v.endsWith('.js')).forEach(v => {
+		api[v.replace('.js', '')] = require(`./src/${v}`)(utils.makeDefaults(html, userID, ctx), api, ctx);
+	});
+} catch (err) {
+	log.error("LOGIN FACEBOOK", "Erreur pendant le chargement des modules src/ :", err);
+	return;
+    });
     }
 
     mainPromise
