@@ -41,7 +41,7 @@ module.exports = {
     if (body === "!stop") {
       clearTimeout(session.timeoutID);
       delete activeSessions[threadID];
-      return message.reply("🛑 Quiz des Drapeaux arrêté.");
+      return message.reply("🛑 Quiz des techniques arrêté.");
     }
 
     // START
